@@ -1,0 +1,52 @@
+import java.security.CryptoPrimitive;
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String args[]) {
+
+		boolean end = false;
+		Caesar cr = new Caesar();
+		Vigenere vg = new Vigenere();
+		Scanner strinScanner = new Scanner(System.in);
+		Scanner intScanner = new Scanner(System.in);
+
+		while (!end) {
+
+			System.out.println("Caesar(1)/Vigenere(2)");
+
+			int a = intScanner.nextInt();
+
+			if (a == 1) {
+				System.out.println("Encrypt(1)/Decrypt(2)/Text(3)/End(4)?");
+
+				int y = intScanner.nextInt();
+
+				switch (y) {
+				case 1:
+					System.out.println(
+							"Geben sie ihren Text an und um wieviele Stellen sie den Text verschluesseln wollen.");
+
+					String input = strinScanner.nextLine().toLowerCase();
+					int x = intScanner.nextInt();
+					cr.encrypt(input, x);
+					break;
+				case 2:
+					System.out.println(cr.decrypt());
+					break;
+				case 3:
+					System.out.println(cr.getEncrypted());
+					break;
+				case 4:
+					end = true;
+					break;
+				default:
+					System.out.println("invalid.");
+				}
+
+			} else if (a == 2) {
+				System.out.println("nope");
+			}
+		}
+	}
+}
